@@ -1,0 +1,6 @@
+packages:
+  - 'packages/component/atom/*'
+  - 'packages/component/molecule/*'
+  - 'packages/component/organism/structural/*'
+  - 'packages/component/organism/business/*'
+  - 'packages/library/*'

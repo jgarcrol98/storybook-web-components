@@ -1,0 +1,42 @@
+{
+  "name": "@jgarcrol98/storybook-web-components",
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "clean": "npx -y rimraf node_modules package-lock.json",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "workspaces": [
+    "packages/**"
+  ],
+  "dependencies": {
+    "@material/web": "1.4.1",
+    "lit": "3.1.3"
+  },
+  "devDependencies": {
+    "@storybook/addon-docs": "8.0.10",
+    "@storybook/addon-essentials": "8.0.10",
+    "@storybook/addon-links": "8.0.10",
+    "@storybook/blocks": "8.0.10",
+    "@storybook/test": "8.0.10",
+    "@storybook/web-components": "8.0.10",
+    "@storybook/web-components-vite": "8.0.10",
+    "@types/inquirer": "9.0.7",
+    "inquirer": "9.2.20",
+    "rollup-plugin-minify-html-literals": "1.2.6",
+    "storybook": "8.0.10",
+    "typescript": "5.4.5",
+    "vite": "5.2.11"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  }
+}

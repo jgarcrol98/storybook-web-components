@@ -1,0 +1,17 @@
+<!-- <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL@20..48,100..700,0..1"
+    rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL@20..48,100..700,0..1"
+    rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL@20..48,100..700,0..1"
+    rel="stylesheet" /> -->
+<script>
+    const define = customElements.define.bind(customElements);
+    customElements.define = (name, constructor, options) => {
+        if (customElements.get(name)) {
+            console.log(`Custom Element ${name} registered`);
+            window.location.reload();
+            return
+        }
+        return define(name, constructor, options);
+    };
+</script>
