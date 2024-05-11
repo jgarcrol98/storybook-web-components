@@ -13,9 +13,3 @@ export const STORY_CONTROL_COLOR = {
   },
   options: Object.values(THEME_COLORS),
 };
-
-export type StoryIntegrationPlatformProps = {
-  token: string;
-  urlApi: string;
-  urlPlatform: string;
-};
