@@ -29,7 +29,7 @@ const meta = {
     },
   },
   render: args => html`
-    <wcicon .name=${args.name} .fontType=${args.fontType} ?filled=${args.filled}></wcicon>
+    <wc-icon .name=${args.name} .fontType=${args.fontType} ?filled=${args.filled}></wc-icon>
   `,
 } satisfies Meta<IconProps>;
 

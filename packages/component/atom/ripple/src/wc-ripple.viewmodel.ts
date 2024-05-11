@@ -3,9 +3,9 @@ import { LitElement } from 'lit';
 import { property, queryAsync } from 'lit/decorators.js';
 
 export class WcRippleViewModel extends LitElement {
-  @property({ type: Boolean, reflect: true }) protected disabled: boolean = false;
-  @property({ type: Boolean, reflect: true }) protected unbounded: boolean = false;
-  @property({ type: Object }) protected control!: HTMLElement;
+  @property({ type: Boolean, reflect: true }) public disabled: boolean = false;
+  @property({ type: Boolean, reflect: true }) public unbounded: boolean = false;
+  @property({ type: Object }) public control!: HTMLElement;
 
   @queryAsync('md-ripple') protected ripple!: Promise<MdRipple>;
 

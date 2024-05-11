@@ -1,15 +1,5 @@
-import { readdirSync } from 'fs';
 import inquirer from 'inquirer';
-
-const getDirectories = source =>
-  readdirSync(source, { withFileTypes: true }).filter(dirent => dirent.isDirectory());
-
-const atoms = getDirectories('packages/component/atom');
-const molecules = getDirectories('packages/component/molecule');
-const structural = getDirectories('packages/component/organism/structural');
-const business = getDirectories('packages/component/organism/business');
-
-const webComponentsFolder = [...atoms, ...molecules, ...structural, ...business];
+import { atoms, business, molecules, structural, webComponentsFolder } from '../directories';
 
 const choicesAtoms = atoms.length > 0 ? [new inquirer.Separator(' = Atom = '), ...atoms.map(({ name }) => ({ name }))] : [];
 const choicesMolecules = molecules.length > 0 ? [new inquirer.Separator(' = Molecule = '), ...molecules.map(({ name }) => ({ name }))] : [];

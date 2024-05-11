@@ -3,7 +3,7 @@ import { CSSResult, CSSResultOrNative, css } from 'lit';
 export class ColorTheme {
   static cssBase: CSSResult = css`
     :root {
-      --theme-color-primary: #935e07;
+      --theme-color-primary: #ad6c03;
       --theme-color-contrast: #ffffff;
 
       --theme-color-secondary: #3dc2ff;
