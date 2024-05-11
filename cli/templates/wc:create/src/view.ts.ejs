@@ -1,0 +1,20 @@
+import { CSSResultGroup, CSSResultOrNative, TemplateResult, html } from 'lit';
+import { <%=cssClassName%> } from './css/<%=cssFileName%>';
+import { <%=viewModelClassName%> } from './<%=viewModelFileName%>';
+  
+export class <%=viewClassName%> extends <%=viewModelClassName%> {
+  protected static finalizeStyles(styles?: CSSResultGroup | undefined): CSSResultOrNative[] {
+    return [...super.finalizeStyles(styles), <%=cssClassName%>];
+  }
+  
+  public render(): TemplateResult {
+    return html` <h1>Hello <%=viewClassName%>!</h1> `;
+  }
+}
+  
+window.customElements.define('<%=tagName%>', <%=viewClassName%>);
+declare global {
+  interface HTMLElementTagNameMap {
+    '<%=tagName%>': <%=viewClassName%>;
+  }
+}

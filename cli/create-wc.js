@@ -1,5 +1,11 @@
-import { mkdirSync, writeFileSync } from 'fs';
+import ejs from 'ejs';
+import { mkdirSync, readFileSync, writeFileSync } from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { changeToCamelCase } from './utils.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export function createWC(webComponent) {
   const split = webComponent.split("/");
@@ -44,111 +50,47 @@ export function createWC(webComponent) {
 
   const tagName = `${prefix}-${wcName}`;
 
-  const literalQuote = "`";
+
+  const bindDataObj = {
+    cssClassName,
+    cssFileName,
+    viewModelFileName,
+    viewModelClassName,
+    viewClassName,
+    tagName,
+    wcName,
+    wcCamelCase
+  }
 
   // css
-  const cssContent =
-    `import { css } from 'lit';
-  
-  export const ${cssClassName} = css${literalQuote}
-      :host {
-          display: block;
-      }
-    ${literalQuote};
-  `;
-  writeFileSync(cssFilePath, cssContent);
+  const templateThemeCss = readFileSync(path.resolve(__dirname, './templates/wc:create/src/css/theme.css.ts.ejs'), 'utf8');
+  const ThemeCssContent = ejs.render(templateThemeCss, bindDataObj);
+  writeFileSync(cssFilePath, ThemeCssContent);
 
 
   // viewmodel
-  const ViewModelContent = `
-   import { LitElement } from 'lit';
-  
-   export class ${viewModelClassName} extends LitElement {}
-      `;
+  const templateViewModel = readFileSync(path.resolve(__dirname, './templates/wc:create/src/viewmodel.ts.ejs'), 'utf8');
+  const ViewModelContent = ejs.render(templateViewModel, bindDataObj);
   writeFileSync(viewModelFilePath, ViewModelContent);
 
-  // view
-  const viewContent =
-    `import { CSSResultGroup, CSSResultOrNative, TemplateResult, html } from 'lit';
-  import { ${cssClassName} } from './css/${cssFileName}';
-  import { ${viewModelClassName} } from './${viewModelFileName}';
-  
-  export class ${viewClassName} extends ${viewModelClassName} {
-    protected static finalizeStyles(styles?: CSSResultGroup | undefined): CSSResultOrNative[] {
-      return [...super.finalizeStyles(styles), ${cssClassName}];
-    }
-  
-    public render(): TemplateResult {
-      return html${literalQuote} <h1>Hello ${viewClassName}!</h1> ${literalQuote};
-    }
-  }
-  
-  window.customElements.define('${tagName}', ${viewClassName});
-  declare global {
-    interface HTMLElementTagNameMap {
-      '${tagName}': ${viewClassName};
-    }
-  }
-  
-  `
+  // view 
+  const templateView = readFileSync(path.resolve(__dirname, './templates/wc:create/src/view.ts.ejs'), 'utf8');
+  const viewContent = ejs.render(templateView, bindDataObj);
   writeFileSync(viewFilePath, viewContent);
 
   // story
-  const storyContent = `
-import type { Meta, StoryObj } from '@storybook/web-components';
-import { html } from 'lit';
-import '../index';
-
-// More on how to set up stories at: https://storybook.js.org/docs/writing-stories
-type ${wcCamelCase}Props = {
-};
-
-const meta = {
-  title: 'Atom/${wcCamelCase}',
-  
-  argTypes: {
-  },
-  render: args =>
-    html\`<${tagName} ></${tagName}>\`,
-} satisfies Meta<${wcCamelCase}Props>;
-
-export default meta;
-type Story = StoryObj<${wcCamelCase}Props>;
-
-export const Default: Story = {
-  args: {
-  },
-};
-
-`
-  writeFileSync(storyFilePath, storyContent);
+  const templateIndexStory = readFileSync(path.resolve(__dirname, './templates/wc:create/stories/index.stories.ts.ejs'), 'utf8');
+  const indexStoryContent = ejs.render(templateIndexStory, { wcName, wcCamelCase, tagName });
+  writeFileSync(storyFilePath, indexStoryContent);
 
   // package.json
-  const packageJsonContent = `
-{
-  "name": "@jgarcrol98/wc-${wcName}",
-  "version": "0.0.1",
-  "description": "",
-  "author": "jgarcrol98",
-  "license": "MIT",
-  "main": "index.ts",
-  "module": "index.ts",
-  "scripts": {},
-  "dependencies": {
-    "lit": "3.1.3"
-  },  
-  "files": [],
-  "publishConfig": {
-    "access": "public"
-  }
-}
-`
+  const templatePackageJson = readFileSync(path.resolve(__dirname, './templates/wc:create/package.json.ejs'), 'utf8');
+  const packageJsonContent = ejs.render(templatePackageJson, { wcName });
   writeFileSync(packageJsonFilePath, packageJsonContent);
 
   // index.ts
-  const indexContent = `
-  export * from './src/${viewFileName}';
-  `
+  const templateIndex = readFileSync(path.resolve(__dirname, './templates/wc:create/index.ts.ejs'), 'utf8');
+  const indexContent = ejs.render(templateIndex, { viewFileName });
   writeFileSync(indexFilePath, indexContent);
 
   console.log(`End create wc ${wcName}`);
