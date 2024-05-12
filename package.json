@@ -1,6 +1,6 @@
 {
   "name": "@jgarcrol98/storybook-web-components",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "scripts": {
     "clean": "npx -y rimraf node_modules package-lock.json",

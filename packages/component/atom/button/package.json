@@ -1,6 +1,6 @@
 {
   "name": "@jgarcrol98/wc-button",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "author": "jgarcrol98",
   "license": "MIT",
@@ -12,7 +12,9 @@
     "@jgarcrol98/wc-icon": "0.0.1",
     "@jgarcrol98/wc-ripple": "0.0.1"
   },
-  "files": [],
+  "files": [
+    "src/**"
+  ],
   "publishConfig": {
     "access": "public"
   }

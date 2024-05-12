@@ -1,6 +1,6 @@
 {
   "name": "@jgarcrol98/wc-icon",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "author": "jgarcrol98",
   "license": "MIT",
@@ -11,7 +11,9 @@
     "lit": "3.1.3",
     "@material/web": "1.3.0"
   },
-  "files": [],
+  "files": [
+    "src/**"
+  ],
   "publishConfig": {
     "access": "public"
   }

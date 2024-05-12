@@ -1,6 +1,6 @@
 {
   "name": "@jgarcrol98/lib-fetch",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "author": "jgarcrol98",
   "license": "MIT",
@@ -8,7 +8,9 @@
   "module": "index.ts",
   "scripts": {},
   "dependencies": {},
-  "files": [],
+  "files": [
+    "src/**"
+  ],
   "publishConfig": {
     "access": "public"
   }
