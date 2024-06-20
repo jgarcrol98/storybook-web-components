@@ -1,4 +1,4 @@
-import { createWC } from './create-wc.js';
+import { createWC } from './feature/create-wc.js';
 import { showIntroCLI } from './utils.js';
 
 showIntroCLI();
