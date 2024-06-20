@@ -1,8 +1,12 @@
 import { createWC } from './create-wc.js';
+import { showIntroCLI } from './utils.js';
+
+showIntroCLI();
 
 const action = process.argv[2];
 
 if (action === "wc:create") {
+    console.log(process.argv)
     const wcName = process.argv[3];
     createWC(wcName);
 } else {
@@ -11,3 +15,5 @@ if (action === "wc:create") {
             check with: ./cli wc:create <name-wc>
             `);
 }
+
+

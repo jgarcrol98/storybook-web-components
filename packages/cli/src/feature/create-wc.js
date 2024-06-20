@@ -2,7 +2,7 @@ import ejs from 'ejs';
 import { mkdirSync, readFileSync, writeFileSync } from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { changeToCamelCase } from './utils.js';
+import { changeToCamelCase } from '../utils.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

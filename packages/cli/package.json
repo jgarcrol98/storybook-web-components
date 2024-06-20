@@ -1,0 +1,33 @@
+{
+  "name": "@jgarcrol/jgarcrol-cli",
+  "version": "0.0.3",
+  "description": "cli para la generación de proyectos y componentes basados en lit",
+  "author": "jgarcrol",
+  "license": "jgarcrol",
+  "main": "index.js",
+  "type": "module",
+  "bin": {
+    "jgarcrol-cli": "bin/jgarcrol-cli.js"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "inquirer": "9.2.23",
+    "ejs": "3.1.10"
+  },
+  "devDependencies": {},
+  "files": [
+    "src/**",
+    "bin/**",
+    "index.js",
+    "LICENSE",
+    "package.json",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "engines": {
+    "npm": ">=9.0.0",
+    "node": ">=18.0.0"
+  }
+}
