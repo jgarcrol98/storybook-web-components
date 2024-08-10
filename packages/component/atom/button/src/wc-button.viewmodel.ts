@@ -4,20 +4,21 @@ import { property, query } from 'lit/decorators.js';
 import { BUTTON_STYLES, ButtonStyle } from './model/button-types';
 
 /**
- * ViewModel para el componente de botón.
+ * ViewModel at button component.
+ *
  * @category Component
- * @class
+ * @class WcButtonViewModel
  * @extends LitElement
- * @property {string} label - Texto del botón.
- * @property {string} icon - Icono del botón.
- * @property {string} href - URL a la que redirige el botón.
- * @property {ThemeColor} color - Color del botón.
- * @property {ThemeSize} size - Tamaño del botón.
- * @property {ButtonStyle} button - Estilo del botón.
- * @property {boolean} disabled - Indica si el botón está deshabilitado.
- * @property {boolean} loading - Indica si el botón está cargando.
- * @property {boolean} fullWidth - Indica si el botón ocupa todo el ancho.
- * @property {boolean} iconFilled - Indica si el icono del botón está relleno.
+ * @property {string} label - text of button.
+ * @property {string} icon - icon of button.
+ * @property {string} href - Address of button.
+ * @property {ThemeColor} color - Theming of button.
+ * @property {ThemeSize} size - Size of button.
+ * @property {ButtonStyle} button - Button style.
+ * @property {boolean} disabled - Indicates is disabled it.
+ * @property {boolean} loading - Indicates is loading it.
+ * @property {boolean} fullWidth - Indicates is fullWidth it.
+ * @property {boolean} iconFilled - Indicates is disabled it.
  *
  * @fires click - Se dispara cuando se hace click en el botón.
  */
@@ -32,5 +33,5 @@ export class WcButtonViewModel extends LitElement {
   @property({ type: Boolean, reflect: true }) public loading: boolean = false;
   @property({ type: Boolean, reflect: true }) public fullWidth: boolean = false;
   @property({ type: Boolean, reflect: true }) public iconFilled: boolean = false;
-  @query('.button') protected buttonElement!: Promise<HTMLElement>;
+  @query('.button') protected buttonElement!: HTMLElement;
 }

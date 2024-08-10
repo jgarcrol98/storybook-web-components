@@ -80,12 +80,12 @@ export class FetchService {
   }
 
   private _addEssentialHeaders(header?: Headers, token?: string): Headers {
-    header = header ?? new Headers();
-    if (!header.get('Content-Type')) {
-      header.append('Content-Type', 'application/json');
+    const headers = header ?? new Headers();
+    if (!headers.get('Content-Type')) {
+      headers.append('Content-Type', 'application/json');
     }
-    if (token) header.append('Authorization', `Bearer ${token ?? ''}`);
-    return header;
+    if (token) headers.append('Authorization', `Bearer ${token ?? ''}`);
+    return headers;
   }
 
   getUrlSearchParams(criteria: any) {
